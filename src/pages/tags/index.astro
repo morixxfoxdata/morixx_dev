@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())].sort();
+---
+
+<BaseLayout title="Tags" description="タグ一覧">
+  <h1 class="text-3xl font-bold mb-8">タグ一覧</h1>
+
+  {tags.length > 0 ? (
+    <ul class="flex flex-wrap gap-3">
+      {tags.map((tag) => {
+        const count = allPosts.filter((post) => post.data.tags.includes(tag)).length;
+        return (
+          <li>
+            <a
+              href={`/tags/${tag}`}
+              class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              <span>{tag}</span>
+              <span class="text-sm text-gray-500">({count})</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <p class="text-gray-600">タグがありません。</p>
+  )}
+</BaseLayout>

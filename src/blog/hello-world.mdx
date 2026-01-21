@@ -1,0 +1,52 @@
+---
+title: "morixx.devへようこそ"
+description: "技術ブログ morixx.dev の最初の記事です。このブログでは技術に関する学びや発見を記録していきます。"
+pubDate: 2026-01-21
+tags: ["blog", "astro"]
+draft: false
+---
+
+## はじめに
+
+morixx.dev へようこそ！このブログでは、日々の開発で得た知見や新しい技術を試した際の記録を残していきます。
+
+## このブログの技術スタック
+
+このブログは以下の技術で構築されています：
+
+- **Astro** - コンテンツ重視の静的サイト生成フレームワーク
+- **MDX** - Markdown + JSX でリッチなコンテンツを記述
+- **Tailwind CSS** - ユーティリティファーストのCSSフレームワーク
+- **Netlify** - 高速なホスティングサービス
+
+## コードサンプル
+
+ブログ記事では以下のようにコードを掲載できます：
+
+```typescript
+// Content Collections の設定例
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
+
+const blog = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { blog };
+```
+
+## 今後の予定
+
+今後は以下のようなトピックについて記事を書いていく予定です：
+
+- Web開発のベストプラクティス
+- 新しいフレームワークやライブラリの紹介
+- 開発環境の構築方法
+- パフォーマンス最適化のテクニック
+
+ぜひブックマークして、定期的にチェックしてください！
