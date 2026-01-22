@@ -17,6 +17,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       ))}
     </ul>
   ) : (
-    <p class="text-gray-600">まだ記事がありません。</p>
+    <p class="text-gray-600 dark:text-gray-300">まだ記事がありません。</p>
   )}
 </BaseLayout>

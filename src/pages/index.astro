@@ -11,7 +11,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 <BaseLayout title="Home" description="morixx.dev - 技術ブログ">
   <section>
     <h1 class="text-4xl font-bold mb-4">morixx.dev</h1>
-    <p class="text-lg text-gray-600 mb-8">
+    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
       技術に関する学びや発見を記録するブログです。
     </p>
 
@@ -23,11 +23,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         ))}
       </ul>
     ) : (
-      <p class="text-gray-600">まだ記事がありません。</p>
+      <p class="text-gray-600 dark:text-gray-300">まだ記事がありません。</p>
     )}
 
     {posts.length > 0 && (
-      <a href="/blog" class="inline-block mt-6 text-blue-600 hover:underline">
+      <a href="/blog" class="inline-block mt-6 text-blue-600 dark:text-blue-400 hover:underline">
         すべての記事を見る →
       </a>
     )}
