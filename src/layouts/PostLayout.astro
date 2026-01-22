@@ -2,6 +2,13 @@
 import BaseLayout from './BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import TagList from '../components/TagList.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 interface Props {
   title: string;
@@ -10,9 +17,10 @@ interface Props {
   updatedDate?: Date;
   tags: string[];
   image?: { url: string; alt: string };
+  headings: Heading[];
 }
 
-const { title, description, pubDate, updatedDate, tags, image } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, image, headings } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image?.url}>
@@ -29,6 +37,7 @@ const { title, description, pubDate, updatedDate, tags, image } = Astro.props;
       </div>
       {tags.length > 0 && <TagList tags={tags} />}
     </header>
+    <TableOfContents headings={headings} />
     <slot />
   </article>
 </BaseLayout>
